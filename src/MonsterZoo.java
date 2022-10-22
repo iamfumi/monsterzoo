@@ -80,18 +80,7 @@ public class MonsterZoo {
 		}
 	}
 
-	// 呼び出すと1km distanceが増える
-	void move() {
-		this.distance++;
-
-		updateEggDistace();
-
-		int flg1 = (int) (Math.random() * 10);// 0,1の場合はズーstation，7~9の場合はモンスター
-		if (flg1 <= 1) {
-			foundZooStation(); // ズーstation発見時の処理
-		} else if (flg1 >= 7) {
-			foundMonster(); // モンスター発見時の処理
-		}
+	public void checkEggsHatched() {
 		for (int i = 0; i < this.egg.length; i++) {
 			if (this.egg[i] == true && this.eggDistance[i] >= 3) {
 				System.out.println("卵が孵った！");
@@ -108,6 +97,21 @@ public class MonsterZoo {
 				this.eggDistance[i] = 0.0;
 			}
 		}
+	}
+
+	// 呼び出すと1km distanceが増える
+	void move() {
+		this.distance++;
+
+		updateEggDistace();
+
+		int flg1 = (int) (Math.random() * 10);// 0,1の場合はズーstation，7~9の場合はモンスター
+		if (flg1 <= 1) {
+			foundZooStation(); // ズーstation発見時の処理
+		} else if (flg1 >= 7) {
+			foundMonster(); // モンスター発見時の処理
+		}
+		checkEggsHatched();
 	}
 
 	public double getDistance() {
