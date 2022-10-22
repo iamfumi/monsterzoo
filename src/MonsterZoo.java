@@ -53,6 +53,33 @@ public class MonsterZoo {
 		}
 	}
 
+	public void foundMonster() {
+		int m = (int) (this.monsterZukan.length * Math.random());// monsterZukanからランダムにモンスターを出す
+		System.out.println(this.monsterZukan[m] + "が現れた！");
+		for (int i = 0; i < 3 && this.balls > 0; i++) {// 捕まえる or 3回ボールを投げるまで繰り返す
+			int r = (int) (6 * Math.random());// 0~5までの数字をランダムに返す
+			if (this.fruits > 0) {
+				System.out.println("フルーツを投げた！捕まえやすさが倍になる！");
+				this.fruits--;
+				r = r * 2;
+			}
+			System.out.println(this.monsterZukan[m] + "にボールを投げた");
+			this.balls--;
+			if (this.monsterRare[m] <= r) {// monsterRare[m]の値がr以下の場合
+				System.out.println(this.monsterZukan[m] + "を捕まえた！");
+				for (int j = 0; j < userMonster.length; j++) {
+					if (this.userMonster[j] == null) {
+						this.userMonster[j] = this.monsterZukan[m];
+						break;
+					}
+				}
+				break;// ボール投げ終了
+			} else {
+				System.out.println(this.monsterZukan[m] + "に逃げられた！");
+			}
+		}
+	}
+
 	// 呼び出すと1km distanceが増える
 	void move() {
 		this.distance++;
@@ -63,30 +90,7 @@ public class MonsterZoo {
 		if (flg1 <= 1) {
 			foundZooStation(); // ズーstation発見時の処理
 		} else if (flg1 >= 7) {
-			int m = (int) (this.monsterZukan.length * Math.random());// monsterZukanからランダムにモンスターを出す
-			System.out.println(this.monsterZukan[m] + "が現れた！");
-			for (int i = 0; i < 3 && this.balls > 0; i++) {// 捕まえる or 3回ボールを投げるまで繰り返す
-				int r = (int) (6 * Math.random());// 0~5までの数字をランダムに返す
-				if (this.fruits > 0) {
-					System.out.println("フルーツを投げた！捕まえやすさが倍になる！");
-					this.fruits--;
-					r = r * 2;
-				}
-				System.out.println(this.monsterZukan[m] + "にボールを投げた");
-				this.balls--;
-				if (this.monsterRare[m] <= r) {// monsterRare[m]の値がr以下の場合
-					System.out.println(this.monsterZukan[m] + "を捕まえた！");
-					for (int j = 0; j < userMonster.length; j++) {
-						if (this.userMonster[j] == null) {
-							this.userMonster[j] = this.monsterZukan[m];
-							break;
-						}
-					}
-					break;// ボール投げ終了
-				} else {
-					System.out.println(this.monsterZukan[m] + "に逃げられた！");
-				}
-			}
+			foundMonster();
 		}
 		for (int i = 0; i < this.egg.length; i++) {
 			if (this.egg[i] == true && this.eggDistance[i] >= 3) {
