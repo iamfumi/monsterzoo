@@ -39,6 +39,20 @@ public class MonsterZoo {
 		}
 	}
 
+	public void foundZooStation() {
+		System.out.println("ズーstationを見つけた！");
+		int b = (int) (Math.random() * 3);// ball,fruits,eggがランダムに出る
+		int f = (int) (Math.random() * 2);
+		int e = (int) (Math.random() * 2);
+		System.out.println("ボールを" + b + "個，" + "フルーツを" + f + "個" + "卵を" + e + "個Getした！");
+		this.balls = this.balls + b;
+		this.fruits = this.fruits + f;
+		if (e >= 1) {// 卵を1つ以上Getしたら
+			// egg[]に10個以上卵がない場合は新しい卵データをセットする
+			setANewEgg();
+		}
+	}
+
 	// 呼び出すと1km distanceが増える
 	void move() {
 		this.distance++;
@@ -47,17 +61,7 @@ public class MonsterZoo {
 
 		int flg1 = (int) (Math.random() * 10);// 0,1の場合はズーstation，7~9の場合はモンスター
 		if (flg1 <= 1) {
-			System.out.println("ズーstationを見つけた！");
-			int b = (int) (Math.random() * 3);// ball,fruits,eggがランダムに出る
-			int f = (int) (Math.random() * 2);
-			int e = (int) (Math.random() * 2);
-			System.out.println("ボールを" + b + "個，" + "フルーツを" + f + "個" + "卵を" + e + "個Getした！");
-			this.balls = this.balls + b;
-			this.fruits = this.fruits + f;
-			if (e >= 1) {// 卵を1つ以上Getしたら
-				// egg[]に10個以上卵がない場合は新しい卵データをセットする
-				setANewEgg();
-			}
+			foundZooStation(); // ズーstation発見時の処理
 		} else if (flg1 >= 7) {
 			int m = (int) (this.monsterZukan.length * Math.random());// monsterZukanからランダムにモンスターを出す
 			System.out.println(this.monsterZukan[m] + "が現れた！");
