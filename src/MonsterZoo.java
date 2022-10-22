@@ -90,7 +90,7 @@ public class MonsterZoo {
 		if (flg1 <= 1) {
 			foundZooStation(); // ズーstation発見時の処理
 		} else if (flg1 >= 7) {
-			foundMonster();
+			foundMonster(); // モンスター発見時の処理
 		}
 		for (int i = 0; i < this.egg.length; i++) {
 			if (this.egg[i] == true && this.eggDistance[i] >= 3) {
