@@ -12,10 +12,10 @@ public class Main {
 		while(true){
 			try {
 				Thread.sleep(1000);
-				if(pz.getBalls()>0){
+				if(pz.balls>0){
 					pz.move();
-					System.out.println("手持ちのボールは"+pz.getBalls()+"個，フルーツは"+pz.getFruits()+"個");
-					System.out.println(pz.getDistance()+"km歩いた．");
+					System.out.println("手持ちのボールは"+pz.balls+"個，フルーツは"+pz.fruits+"個");
+					System.out.println(pz.distance+"km歩いた．");
 				}else{
 					break;
 				}
@@ -26,9 +26,9 @@ public class Main {
 
 		System.out.println("ボールがなくなった！");
 
-		for(int i=0;i<pz.getUserMonster().length;i++){
-			if(pz.getUserMonster()[i]!=null){
-				System.out.println(pz.getUserMonster()[i]+"を捕まえた．");
+		for(int i=0;i<pz.userMonster.length;i++){
+			if(pz.userMonster[i]!=null){
+				System.out.println(pz.userMonster[i]+"を捕まえた．");
 			}
 		}
 	}
@@ -60,8 +60,8 @@ public class Main {
 		tempMonster[20]="ゾエサン";	tempMonsterRare[20]=5;
 		tempMonster[21]="キタバー";	tempMonsterRare[21]=3;
 
-		pz.setMonsterZukan(tempMonster);
-		pz.setMonsterRare(tempMonsterRare);
+		pz.monsterZukan = tempMonster;
+		pz.monsterRare = tempMonsterRare;
 	}
 
 }

@@ -143,28 +143,4 @@ public class MonsterZoo {
 		}
 		checkEggsHatched();
 	}
-
-	public double getDistance() {
-		return distance;
-	}
-
-	public int getBalls() {
-		return balls;
-	}
-
-	public int getFruits() {
-		return fruits;
-	}
-
-	public String[] getUserMonster() {
-		return userMonster;
-	}
-
-	public void setMonsterZukan(String[] monsterZukan) {
-		this.monsterZukan = monsterZukan;
-	}
-
-	public void setMonsterRare(double[] monsterRare) {
-		this.monsterRare = monsterRare;
-	}
 }
