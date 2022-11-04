@@ -78,6 +78,15 @@ public class MonsterZoo {
 		return ball_random;
 	}
 
+	public void entryGotMonster(int monsterNum) {
+		for (int j : range_make(userMonster.length)) {
+			if (this.userMonster[j] == null) {
+				this.userMonster[j] = this.monsterZukan[monsterNum];
+				break;
+			}
+		}
+	}
+
 	public void foundMonster() {
 		int m = (int) (randomGenerator());// monsterZukanからランダムにモンスターを出す
 		System.out.println(this.monsterZukan[m] + "が現れた！");
@@ -89,13 +98,7 @@ public class MonsterZoo {
 			this.balls--;
 			if (this.monsterRare[m] <= r) {// monsterRare[m]の値がr以下の場合
 				System.out.println(this.monsterZukan[m] + "を捕まえた！");
-
-				for (int j : range_make(userMonster.length)) {
-					if (this.userMonster[j] == null) {
-						this.userMonster[j] = this.monsterZukan[m];
-						break;
-					}
-				}
+				entryGotMonster(m);
 				break;// ボール投げ終了
 			} else {
 				System.out.println(this.monsterZukan[m] + "に逃げられた！");
@@ -103,14 +106,6 @@ public class MonsterZoo {
 		}
 	}
 
-	public void entryGotMonster(int monsterNum) {
-		for (int j : range_make(userMonster.length)) {
-			if (this.userMonster[j] == null) {
-				this.userMonster[j] = this.monsterZukan[monsterNum];
-				break;
-			}
-		}
-	}
 
 	public void eggHatched(int eggNum) {
 		if (this.egg[eggNum] == true && this.eggDistance[eggNum] >= 3) {
